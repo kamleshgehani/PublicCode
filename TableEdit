@@ -1,0 +1,37 @@
+<!-- Edit Function Table -->
+<?php
+if (isset($_GET['edit'])) {
+    $edit_id = $_GET['edit'];
+    $edit_query = "SELECT * FROM userinfo WHERE id = $edit_id";
+    $edit_result = mysqli_query($conn, $edit_query);
+    $edit_row = mysqli_fetch_array($edit_result);
+    $edit_id = $edit_row['id'];
+    $edit_fname = $edit_row['fname'];
+    $edit_lname = $edit_row['lname'];
+    $edit_email = $edit_row['email'];
+    $edit_phone = $edit_row['phone'];
+}
+?>
+
+<!-- Update Function -->
+<?php
+if (isset($_GET['update'])) {
+    $update_id = $_GET['update'];
+    $update_fname = $_GET['fname'];
+    $update_lname = $_GET['lname'];
+    $update_email = $_GET['email'];
+    $update_phone = $_GET['phone'];
+
+    $update_query = "UPDATE userinfo SET fname = '$update_fname', lname = '$update_lname', email = '$update_email', phone = '$update_phone' WHERE id = $update_id";
+    $update_result = mysqli_query($conn, $update_query);
+}
+?>
+
+<!-- Delete Function -->
+<?php
+if (isset($_GET['delete'])) {
+    $delete_id = $_GET['delete'];
+    $delete_query = "DELETE FROM userinfo WHERE id = $delete_id";
+    $delete_result = mysqli_query($conn, $delete_query);
+}
+?>
